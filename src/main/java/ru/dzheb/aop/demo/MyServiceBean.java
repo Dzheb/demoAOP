@@ -15,9 +15,9 @@ public class MyServiceBean {
 //@Timer
     public String method1(String arg) {
         if (arg == null) {
-            throw new StackOverflowError("StackOverflowError");
+            throw new NoSuchElementException("StackOverflowError");
         }
-        return method2(arg);
+        return arg;
     }
 
     @Timer

@@ -4,7 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import ru.dzheb.aop.demo.MyServiceBean;
-
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @SpringBootApplication
 public class AopApplication {
 	/**
@@ -45,7 +46,11 @@ public class AopApplication {
 
 		ConfigurableApplicationContext context =SpringApplication.run(AopApplication.class, args);
 		MyServiceBean myServiceBean = context.getBean(MyServiceBean.class);
+		try{
 		System.out.println(myServiceBean.method1(null));
+		} catch (Throwable e){
+			log.info("Error {}", e.getMessage());
+		}
 		System.out.println(myServiceBean.method2("argument"));
 
 
